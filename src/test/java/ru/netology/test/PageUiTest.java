@@ -1,15 +1,31 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static ru.netology.util.DataHelper.*;
+import static ru.netology.data.DataHelper.*;
 
 public class PageUiTest {
 
+    @BeforeAll
+    static void addListener(){
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+    }
+
+    @AfterAll
+    static void removeListener(){
+        SelenideLogger.removeListener("AllureSelenide");
+    }
+
     @Test
+    @Flaky
     void shouldResubmitRequest() {
         open("http://localhost:9999/");
         $("[data-test-id=city] .input__control").setValue(getCityInternally());
