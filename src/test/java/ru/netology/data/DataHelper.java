@@ -1,4 +1,4 @@
-package ru.netology.util;
+package ru.netology.data;
 
 import com.github.javafaker.Faker;
 

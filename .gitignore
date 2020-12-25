@@ -2,8 +2,12 @@ Thumbs.db*
 .DS_Store
 HELP.md
 .gradle
+.allure
 build/
 cov/
+/rp/data/elasticsearch
+/rp/data/storage
+/rp/data/postgres
 
 ### STS ###
 .apt_generated
